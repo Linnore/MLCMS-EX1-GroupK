@@ -88,6 +88,7 @@ class Cellular_Automaton:
         self.RiMEA_test6_counter = 50
         self.RiMEA_test6_results = []
         self.RiMEA_test7_pd = []
+        self.RiMEA_test7_counter = 10
 
         self.cost_func = DIJKSTRA
 
@@ -289,7 +290,6 @@ class Cellular_Automaton:
             self.RiMEA_test6_counter -= 1
             self.gui.click_button_test6()
             self.gui.click_button_run()
-            print(self.RiMEA_test6_counter)
 
             self.RiMEA_test6_results.append(self.now)
             self.now = 0
@@ -299,8 +299,14 @@ class Cellular_Automaton:
                 self.RiMEA_test6_counter = 50
 
         if self.RiMEA_test_mode == 7 and len(self.population) == 0:
-            self.RiMEA_test_mode = 0
-            self.output_test7_results()
+            self.output_test7_results(self.RiMEA_test7_counter)
+            self.RiMEA_test7_counter -= 1
+            if self.RiMEA_test7_counter == 0:
+                self.RiMEA_test_mode = 0
+                self.RiMEA_test7_counter = 10
+            else:
+                self.gui.click_button_test7()
+                self.gui.click_button_run()
 
     def get_euclidean_distance(self, dist):
         for i in range(self.width):
@@ -414,8 +420,8 @@ class Cellular_Automaton:
 
         f.close()
 
-    def output_test7_results(self):
-        with open("Test7_results.txt", "w") as output:
+    def output_test7_results(self, run):
+        with open(".\output\Test7_results_"+str(run)+"_.txt", "w") as output:
             output.write(
                 "No.\tAge\tAssigned_Speed\tSimulated_Speed\tDistance\tTime\n")
             i = 1
@@ -898,12 +904,15 @@ class Cellular_Automaton_GUI:
 
         # Generate random starting positions for the sample
 
-        pedestrian_coords = []
-        for x in range(50):
-            for y in range(3, self.CA.height-3):
-                pedestrian_coords.append((x, y))
+        # pedestrian_coords = []
+        # for x in range(50):
+        #     for y in range(3, self.CA.height-3):
+        #         pedestrian_coords.append((x, y))
 
-        pos = random.sample(pedestrian_coords, 50)
+        #pos = random.sample(pedestrian_coords, 50)
+        pos = []
+        for y in range(3, self.CA.height-3):
+            pos.append((3, y))
 
         # Generate random age sample with size=50 from N(50, 20^2)
         age_sample = random2.normal(50, 20, 50)
