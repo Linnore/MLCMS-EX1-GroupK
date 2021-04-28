@@ -368,10 +368,10 @@ class Cellular_Automaton:
     def output_test4_results(self):
         numOfpd = len(self.speed_measured_pd_list)
         if numOfpd == 0:
-            with open('Test4_results'+str(self.gui.test4_density)+'.txt', 'w') as output:
+            with open(r'./output/Test4_results'+str(self.gui.test4_density)+'.txt', 'w') as output:
                 output.write(
                     "Number of pedestrians that pass through the measuring area: 0\n")
-                output.write("Average speed: 0\n")
+                output.write("Average speed: 0m/s\n")
 
             return
 
@@ -790,7 +790,7 @@ class Cellular_Automaton_GUI:
         self.window_test4.protocol("WM_DELETE_WINDOW", self.test4_callback)
 
         self.density_list = ["Select Density", "0.5 P/m^2", "1 P/m^2",
-                             "2 P/m^2", "3 P/m^2", "4 P/m^2", "4.5 P/m^2", "5 P/m^2", "6 P/m^2", "6.5 P/m^2", "7 P/m^2", "8 P/m^2", "9 P/m^2"]
+                             "2 P/m^2", "3 P/m^2", "4 P/m^2", "5 P/m^2", "5.5 P/m^2", "6 P/m^2", "6.5 P/m^2", "7 P/m^2", "8 P/m^2"]
         self.combobox_density = ttk.Combobox(
             self.window_test4, values=self.density_list)
         self.combobox_density.pack()
