@@ -1,0 +1,26 @@
+Number of pedestrians that pass through the measuring area: 23
+Average speed: 0.30m/s
+Pedestrian list:
+Pedestrian 1, 0.51m/s, from (98, 12) to (103, 12), consumed 3.30s
+Pedestrian 2, 0.48m/s, from (98, 10) to (103, 10), consumed 3.50s
+Pedestrian 3, 0.52m/s, from (98, 8) to (103, 10), consumed 4.50s
+Pedestrian 4, 0.26m/s, from (98, 9) to (103, 10), consumed 7.70s
+Pedestrian 5, 0.52m/s, from (98, 10) to (103, 10), consumed 3.20s
+Pedestrian 6, 0.25m/s, from (98, 8) to (103, 8), consumed 6.70s
+Pedestrian 7, 0.19m/s, from (98, 10) to (103, 10), consumed 8.80s
+Pedestrian 8, 0.37m/s, from (98, 10) to (103, 10), consumed 4.50s
+Pedestrian 9, 0.23m/s, from (98, 8) to (103, 8), consumed 7.30s
+Pedestrian 10, 0.29m/s, from (98, 10) to (103, 10), consumed 5.80s
+Pedestrian 11, 0.33m/s, from (98, 10) to (103, 10), consumed 5.00s
+Pedestrian 12, 0.28m/s, from (98, 8) to (103, 8), consumed 6.00s
+Pedestrian 13, 0.39m/s, from (98, 10) to (103, 10), consumed 4.30s
+Pedestrian 14, 0.17m/s, from (98, 9) to (103, 10), consumed 11.60s
+Pedestrian 15, 0.23m/s, from (98, 8) to (103, 8), consumed 7.10s
+Pedestrian 16, 0.15m/s, from (98, 9) to (103, 8), consumed 13.30s
+Pedestrian 17, 0.25m/s, from (98, 10) to (103, 10), consumed 6.80s
+Pedestrian 18, 0.11m/s, from (98, 12) to (103, 12), consumed 15.80s
+Pedestrian 19, 0.28m/s, from (98, 10) to (103, 10), consumed 6.00s
+Pedestrian 20, 0.29m/s, from (98, 10) to (103, 10), consumed 5.70s
+Pedestrian 21, 0.37m/s, from (98, 12) to (103, 12), consumed 4.50s
+Pedestrian 22, 0.33m/s, from (98, 12) to (103, 12), consumed 5.00s
+Pedestrian 23, 0.10m/s, from (98, 9) to (103, 8), consumed 21.00s

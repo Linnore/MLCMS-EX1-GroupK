@@ -1,0 +1,2 @@
+Number of pedestrians that pass through the measuring area: 0
+Average speed: 0
