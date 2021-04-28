@@ -704,15 +704,15 @@ class Cellular_Automaton_GUI:
 
     def click_button_task3(self):
         self.text_CA_size.delete(0, 'end')
-        self.text_CA_size.insert(0, '200*200')
-        self.click_button_reset(new_scale=4)
+        self.text_CA_size.insert(0, '50*50')
+        self.click_button_reset()
 
-        self.CA.add_pedestrian(Pedestrian(40, 40))
-        self.CA.add_pedestrian(Pedestrian(190, 70))
-        self.CA.add_pedestrian(Pedestrian(60, 180))
-        self.CA.add_pedestrian(Pedestrian(150, 30))
-        self.CA.add_pedestrian(Pedestrian(130, 190))
-        self.CA.add_target(100, 100)
+        self.CA.add_pedestrian(Pedestrian(18, 0))
+        self.CA.add_pedestrian(Pedestrian(40, 10))
+        self.CA.add_pedestrian(Pedestrian(49, 29))
+        self.CA.add_pedestrian(Pedestrian(19, 49))
+        self.CA.add_pedestrian(Pedestrian(0, 30))
+        self.CA.add_target(24, 24)
 
     def click_button_task4(self):
         self.text_CA_size.delete(0, 'end')
