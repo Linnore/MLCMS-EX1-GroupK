@@ -48,6 +48,6 @@ plt.plot(keys, values)
 #plt.axvline(26, 0, 20, color="red")
 #plt.axvline(34, 0, 20, color="red")
 plt.title("RiMEA Test6 results")
-plt.savefig('../Test6_result.png')
+plt.savefig('./Test6_result.png')
 
 plt.show()
