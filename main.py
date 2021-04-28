@@ -27,14 +27,20 @@ DIJKSTRA = 2
 
 DIRECTIONS = [(0, -1), (-1, 0), (1, 0), (0, 1), (0, 0)]
 
-DEFAULT_SCALE = 8
 
 # Each Cell: 1/3m x 1/3m
 NUM_OF_UNIT_LEN_PER_METER = 3
 
+# By default, 8 pixels is the length of cell's edge
+DEFAULT_SCALE = 8
+
 
 class Pedestrian:
-    def __init__(self, x, y, speed=1.33, age=20):
+    """
+    This is the pedestrian class. Provide a coordinate to generate a pedestrian.
+    """
+
+    def __init__(self, x, y, speed=1.33, age=30):
         self.x = x
         self.y = y
 
@@ -56,13 +62,29 @@ class Pedestrian:
 
         self.time_reach_target = float()
         self.distance_to_target = float()
+        self.std_speed = float()
 
         self.removed = False  # Flag that whether the pd reaches the target and thus is removed
 
 
 class Cellular_Automaton:
+    """
+    This class contains all the logical design of the cellular automaton, including update schema,
+    cost function definition, timing, and handling RiMEA tests. 
+    """
 
     def __init__(self, width, height, scale):
+        """Provide the size of the cellular automaton and the scale of each cell to create a 
+        cellular automaton object.
+
+        Parameters
+        ----------
+        width : integer
+        height : integer
+        scale : integer
+            each cell in the cellular automaton will have size scale*scale pixels
+        """
+
         self.width = width
         self.height = height
         self.scale = scale
@@ -135,6 +157,13 @@ class Cellular_Automaton:
         self.gui.window.mainloop()
 
     def toggle_status(self, event):
+        """This is the method for drawing pedestrians/obstacles/targets in the callular automaton
+
+        Parameters
+        ----------
+        event : Event
+            Mouse Click or Mouse Motion
+        """
         if self.paused:
             x = event.x//self.scale
             y = event.y//self.scale
@@ -154,6 +183,9 @@ class Cellular_Automaton:
                         self.add_obstacle(x, y)
 
     def clock(self):
+        """The global clocking of the cellular automaton. After each time delay, this method
+        will update the cellular automaton by calling the method updateState()
+        """
         while self.running:
             if not self.paused:
                 self.now += self.delay
@@ -163,6 +195,11 @@ class Cellular_Automaton:
             time.sleep(self.delay)
 
     def updateState(self):
+        """The method that update the cellular automaton. It will let all the pedestrians that are
+        about to move to choose the next position according to utility matrix of the last state. 
+        Then this method will update these pedestrians in sequence. Those whose expected next position
+        is occupied by others will stay stil and wait for next movement.
+        """
         for crt_pd in self.population:
             # Speed control
             crt_pd.clock += self.delay
@@ -279,7 +316,6 @@ class Cellular_Automaton:
                 self.RiMEA_test_mode = 0
                 self.RiMEA_test1_counter = 2
 
-
         if self.RiMEA_test_mode == 4 and (self.now > 35 or len(self.population) == 0):
             self.paused = True
             self.output_test4_results()
@@ -309,6 +345,13 @@ class Cellular_Automaton:
                 self.gui.click_button_run()
 
     def get_euclidean_distance(self, dist):
+        """Calculate the distance cost in each cell of the CA by Euclidean distance. 
+
+        Parameters
+        ----------
+        dist : 2D Array/List
+            The computed distance matrix will be passed to this variable.
+        """
         for i in range(self.width):
             for j in range(self.height):
                 dist[i][j] = self.width + self.height
@@ -321,6 +364,14 @@ class Cellular_Automaton:
                             dist[x][y] = tmp
 
     def get_dijkstra_distance(self, dist):
+        """Calculate the distance cost in each cell of the CA by running Dijkstra algorithm.
+        The distance matrix will contain the shortest-path distance to the targets.
+
+        Parameters
+        ----------
+        dist : 2D Array/List
+            The computed distance matrix will be passed to this variable.
+        """
         for i in range(self.width):
             for j in range(self.height):
                 dist[i][j] = self.width + self.height
@@ -335,6 +386,17 @@ class Cellular_Automaton:
                         (distance + 1/3, self.get_neighbors(x, y)))
 
     def get_neighbors(self, x, y):
+        """Get the neighbors of a given position (x,y)
+        Parameters
+        ----------
+        x : integer
+        y : integer
+
+        Returns
+        -------
+        List
+            the tuple list of neighbors' coordinates of (x, y)
+        """
         neighbors = []
         for (dx, dy) in DIRECTIONS:
             if x+dx >= 0 and x+dx < self.width and y+dy >= 0 and y+dy < self.height:
@@ -383,7 +445,7 @@ class Cellular_Automaton:
 
         speedList = []
         for pd in self.speed_measured_pd_list:
-            speedList.append(self.hamiltonDist(
+            speedList.append(self.manhattanDist(
                 pd.coord_enterMA, pd.coord_leaveMA)/((pd.time_leaveMA-pd.time_enterMA)*3))
         avg_speed = sum(speedList)/numOfpd
         with open('Test4_results'+str(self.gui.test4_density)+'.txt', 'w') as output:
@@ -427,11 +489,25 @@ class Cellular_Automaton:
             i = 1
             for pd in self.RiMEA_test7_pd:
                 output.write("%d\t%d\t%.4f\t%.4f\t%.2f\t%.2f\n" % (
-                    i, pd.age, pd.speed, pd.distance_to_target/pd.time_reach_target, pd.distance_to_target, pd.time_reach_target))
+                    i, pd.age, pd.std_speed, pd.distance_to_target/pd.time_reach_target, pd.distance_to_target, pd.time_reach_target))
                 i += 1
-        pass
+        self.RiMEA_test7_pd = []
 
-    def hamiltonDist(self, p, q):
+    def manhattanDist(self, p, q):
+        """Calculate the Manhattan distance between two points
+
+        Parameters
+        ----------
+        p : tuple
+            consists of the x,y coordinates of a point
+        q : tuple
+            consists of the x,y coordinates of a point
+
+        Returns
+        -------
+        int
+            the Manhattan distance between p and q
+        """
         return abs(p[0]-q[0]) + abs(p[1]-q[1])
 
     def add_avoidance_cost(self, x, y):
@@ -484,6 +560,10 @@ class Cellular_Automaton:
 
 
 class Cellular_Automaton_GUI:
+    """This is the GUI for cellular automaton. It receives input from users and may change property of the CA.
+    To create a GUI for CA, one must provide a CA object to link the GUI.
+    """
+
     def __init__(self, CA, width, height, scale):
         self.CA = CA
         self.width = width
@@ -885,8 +965,6 @@ class Cellular_Automaton_GUI:
         for p in pedestrians:
             self.CA.add_pedestrian(p)
 
-        pass
-
     def click_button_test7(self):
 
         self.CA.RiMEA_test_mode = 7
@@ -902,14 +980,6 @@ class Cellular_Automaton_GUI:
         for y in range(3, self.CA.height-3):
             self.CA.add_target(self.CA.width-3, y)
 
-        # Generate random starting positions for the sample
-
-        # pedestrian_coords = []
-        # for x in range(50):
-        #     for y in range(3, self.CA.height-3):
-        #         pedestrian_coords.append((x, y))
-
-        #pos = random.sample(pedestrian_coords, 50)
         pos = []
         for y in range(3, self.CA.height-3):
             pos.append((3, y))
@@ -939,10 +1009,9 @@ class Cellular_Automaton_GUI:
             speed = random2.normal(speed_info[age][0], speed_info[age][1])
             pd = Pedestrian(pos[i][0], pos[i][1], speed, age)
             pd.distance_to_target = (self.CA.width-3-pos[i][0])/3
+            pd.std_speed = speed_info[age][0]
             self.CA.RiMEA_test7_pd.append(pd)
             self.CA.add_pedestrian(pd)
-
-        # pass
 
     def changeColour(self, x, y, col):
         self.canvas.itemconfig(self.cells[(x, y)], fill=col)
