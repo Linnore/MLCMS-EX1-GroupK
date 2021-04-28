@@ -83,7 +83,6 @@ class Cellular_Automaton:
         self.crt_adding_mode = EMPTY
 
         self.RiMEA_test1_counter = 50
-
         self.RiMEA_test1_results = []
         self.RiMEA_test6_counter = 50
         self.RiMEA_test6_results = []
@@ -277,7 +276,8 @@ class Cellular_Automaton:
             if self.RiMEA_test1_counter == 0:
                 self.output_test1_results()
                 self.RiMEA_test_mode = 0
-                self.RiMEA_test1_counter = 50
+                self.RiMEA_test1_counter = 2
+
 
         if self.RiMEA_test_mode == 4 and (self.now > 35 or len(self.population) == 0):
             self.paused = True
@@ -289,7 +289,7 @@ class Cellular_Automaton:
             self.RiMEA_test6_counter -= 1
             self.gui.click_button_test6()
             self.gui.click_button_run()
-            print(self.RiMEA_test6_counter)
+            #print(self.RiMEA_test6_counter)
 
             self.RiMEA_test6_results.append(self.now)
             self.now = 0
@@ -338,7 +338,7 @@ class Cellular_Automaton:
     def output_test1_results(self):
         min = float('inf')
         max = float('-inf')
-        f = open("Test1_results.txt", "w")
+        f = open("output/Test1_results.txt", "w")
 
         f.write("RiMEA Test Case 1: Moving straight with different speeds (" + str(
             len(self.RiMEA_test1_results)) + " Iterations)" + "\n" + "\n")
@@ -350,7 +350,7 @@ class Cellular_Automaton:
                 max = i
 
             speed = 40/i
-            f.write("Time: "+str(i) + " Speed: "+speed+"m/s"+"\n")
+            f.write("Time: "+str(i) + " Speed: "+str(speed)+"m/s"+"\n")
 
         avg = sum(self.RiMEA_test1_results) / len(self.RiMEA_test1_results)
         speedmin = 40/min
@@ -394,7 +394,7 @@ class Cellular_Automaton:
     def output_test6_results(self):
         min = float('inf')
         max = float('-inf')
-        f = open("Test6_results", "w")
+        f = open("output/Test6_results.txt.txt", "w")
 
         f.write("RiMEA Test Case 6:.isMoving around a corner (" + str(
             len(self.RiMEA_test6_results)) + " Iterations)" + "\n" + "\n")
