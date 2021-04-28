@@ -13,6 +13,6 @@
 
 
 #### Contributed by 
-Junle Li
-Oliver Beck
-Chengqi Zhou
+Junle Li,
+Oliver Beck, 
+Chengqi Zhou.
