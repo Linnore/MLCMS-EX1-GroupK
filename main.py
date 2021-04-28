@@ -705,7 +705,7 @@ class Cellular_Automaton_GUI:
     def click_button_task3(self):
         self.text_CA_size.delete(0, 'end')
         self.text_CA_size.insert(0, '200*200')
-        self.click_button_reset(new_scale=2)
+        self.click_button_reset(new_scale=4)
 
         self.CA.add_pedestrian(Pedestrian(40, 40))
         self.CA.add_pedestrian(Pedestrian(190, 70))
