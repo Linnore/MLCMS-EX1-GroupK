@@ -1,0 +1,41 @@
+Number of pedestrians that pass through the measuring area: 38
+Average speed: 1.33m/s
+Pedestrian list:
+Pedestrian 1, 1.39m/s, from (98, 10) to (103, 10), consumed 1.20s
+Pedestrian 2, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 3, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 4, 1.28m/s, from (98, 12) to (103, 12), consumed 1.30s
+Pedestrian 5, 1.28m/s, from (98, 11) to (103, 11), consumed 1.30s
+Pedestrian 6, 1.39m/s, from (98, 12) to (103, 12), consumed 1.20s
+Pedestrian 7, 1.39m/s, from (98, 9) to (103, 9), consumed 1.20s
+Pedestrian 8, 1.28m/s, from (98, 10) to (103, 10), consumed 1.30s
+Pedestrian 9, 1.39m/s, from (98, 8) to (103, 8), consumed 1.20s
+Pedestrian 10, 1.39m/s, from (98, 9) to (103, 9), consumed 1.20s
+Pedestrian 11, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 12, 1.28m/s, from (98, 10) to (103, 10), consumed 1.30s
+Pedestrian 13, 1.39m/s, from (98, 8) to (103, 8), consumed 1.20s
+Pedestrian 14, 1.28m/s, from (98, 11) to (103, 11), consumed 1.30s
+Pedestrian 15, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 16, 1.39m/s, from (98, 9) to (103, 9), consumed 1.20s
+Pedestrian 17, 1.39m/s, from (98, 11) to (103, 11), consumed 1.20s
+Pedestrian 18, 1.28m/s, from (98, 10) to (103, 10), consumed 1.30s
+Pedestrian 19, 1.28m/s, from (98, 11) to (103, 11), consumed 1.30s
+Pedestrian 20, 1.39m/s, from (98, 9) to (103, 9), consumed 1.20s
+Pedestrian 21, 1.28m/s, from (98, 11) to (103, 11), consumed 1.30s
+Pedestrian 22, 1.28m/s, from (98, 11) to (103, 11), consumed 1.30s
+Pedestrian 23, 1.28m/s, from (98, 8) to (103, 8), consumed 1.30s
+Pedestrian 24, 1.28m/s, from (98, 11) to (103, 11), consumed 1.30s
+Pedestrian 25, 1.28m/s, from (98, 11) to (103, 11), consumed 1.30s
+Pedestrian 26, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 27, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 28, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 29, 1.39m/s, from (98, 11) to (103, 11), consumed 1.20s
+Pedestrian 30, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 31, 1.39m/s, from (98, 10) to (103, 10), consumed 1.20s
+Pedestrian 32, 1.39m/s, from (98, 11) to (103, 11), consumed 1.20s
+Pedestrian 33, 1.39m/s, from (98, 9) to (103, 9), consumed 1.20s
+Pedestrian 34, 1.39m/s, from (98, 10) to (103, 10), consumed 1.20s
+Pedestrian 35, 1.39m/s, from (98, 11) to (103, 11), consumed 1.20s
+Pedestrian 36, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
+Pedestrian 37, 1.39m/s, from (98, 11) to (103, 11), consumed 1.20s
+Pedestrian 38, 1.28m/s, from (98, 9) to (103, 9), consumed 1.30s
