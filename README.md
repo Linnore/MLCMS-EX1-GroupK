@@ -12,6 +12,7 @@
 
 
 
-Contributed by Junle Li
-               Oliver Beck
-               Chengqi Zhou
+#### Contributed by 
+Junle Li
+Oliver Beck
+Chengqi Zhou
